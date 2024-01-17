@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dadadada🌻</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('your-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        #logo {
+            font-size: 60px;
+            /* 设置Logo的字体大小 */
+            font-weight: bold;
+            /* 字体加粗 */
+            color: #4285F4;
+            /* 设置Logo的颜色 */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #search-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        #search-input {
+            width: 60%;
+            /* 根据屏幕宽度动态设置 */
+            padding: 12px 24px;
+            border: 1px solid #aaa;
+            /* 设置边框颜色为稍深的灰色 */
+            border-radius: 24px;
+            font-size: 16px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #engine-selector,
+        #shortcuts {
+            margin-top: 20px;
+        }
+
+        .shortcut-add-button {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f1f3f4;
+            /* 浅灰色背景 */
+            color: #5f6368;
+            /* 深灰色的加号 */
+            font-size: 30px;
+            line-height: 50px;
+            /* 垂直居中加号 */
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .shortcut-add-button:hover {
+            background-color: #e8eaed;
+            /* 鼠标悬停时的背景色 */
+        }
+
+        .shortcut-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            /* 粉红色背景 */
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .iconA {
+            background-color: #FFC0CB;
+                /* 红色背景 */
+        }
+
+        /* .iconB {
+            background-color: red;
+        } */
+        .iconB {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 5px;
+            overflow: hidden; /* 防止内容溢出 */
+        }
+        .iconB.scroll-text > span {
+            position: absolute;
+            white-space: nowrap;
+            animation: scroll-left 5s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .shortcut-icon:hover {
+            background-color: #FFB6C1;
+            /* 鼠标悬停时的背景色 */
+        }
+
+        .shortcut-add-button {
+            /* 加号按钮的样式与shortcut-icon保持一致 */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f1f3f4;
+            color: #5f6368;
+            font-size: 30px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .shortcut-add-button:hover {
+            background-color: #e8eaed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="background">
+        <div id="logo" onclick="toggleEngine()">
+            Google <!-- 点击文本Logo可以切换搜索引擎 -->
+        </div>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="搜索..." onkeypress="search(event)">
+        </div>
+        <div id="engine-selector">
+            <!-- 搜索引擎选择器的选项 -->
+        </div>
+        <div id="shortcuts">
+            <div class="shortcut-icon iconA" onclick="window.open('https://www.bilibili.com', '_blank')">B</div>            <!-- 快捷方式 -->
+            <div class="shortcut-icon iconB" onclick="window.open('https://www.youtube.com/', '_blank')"><span class="scroll-text">Y</span></div>            <!-- 快捷方式 -->
+            <div class="shortcut-add-button">+</div> <!-- 加号按钮 -->
+        </div>
+    </div>
+    <script>
+        function search(event) {
+            if (event.key === 'Enter') {
+                var query = document.getElementById('search-input').value;
+                var searchUrl = currentEngine === 'Google' ? 'https://www.google.com/search?q=' : 'https://www.baidu.com/s?wd=';
+                window.location.href = searchUrl + encodeURIComponent(query);
+            }
+        }
+        let currentEngine = 'Google';
+        function toggleEngine() {
+            currentEngine = currentEngine === 'Google' ? 'Baidu' : 'Google';
+            document.getElementById('logo').textContent = currentEngine;
+        }
+
+        function adjustSearchInputWidth() {
+            var screenWidth = window.innerWidth;
+            var searchInputWidth = screenWidth * 0.5; // 屏幕宽度的60%
+            document.getElementById('search-input').style.width = searchInputWidth + 'px';
+        }
+
+        window.onload = adjustSearchInputWidth;
+        window.onresize = adjustSearchInputWidth;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{
+    "short_cuts": [
+        {
+            "name": "baidu",
+            "url": "www.baidu.com",
+            "IconUrl":""
+        },
+        {
+            "name": "bilibili",
+            "url": "www.bilibili.com",
+            "IconUrl":""
+        },
+        {
+            "name": "taobao",
+            "url": "www.taobao.com",
+            "IconUrl":""
+        }
+    ],
+    "backgroungImgUrl": "",
+    "engineSelected":"Google", 
+    "engineArr": [
+        {
+            "logoName": "Baidu",
+            "searchPref":"https://www.baidu.com/search?q="
+        },
+        {
+            "logoName": "Google",
+            "searchPref":"https://www.google.com/search?q="
+        }
+    ]
+}
